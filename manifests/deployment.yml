@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: juiceshopv1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juiceshopv1
+  template:
+    metadata:
+      labels:
+        app: juiceshopv1 
+    spec:
+      containers:
+        - name: selahcloudnewbadstorenew 
+          image: bkimminich/juice-shop
+          ports:
+          - containerPort: 3000
