@@ -29,6 +29,6 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      mv $(kubeconfig.secureFilePath) .
-      ls -a /home/vsts/
+      mv $(kubeconfig.secureFilePath) /home/vsts/.kube/
+      ls -a /home/vsts/.kube/
       
