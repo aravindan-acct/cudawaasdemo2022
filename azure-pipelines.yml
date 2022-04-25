@@ -43,10 +43,12 @@ steps:
       with open("/home/vsts/svc.json", "r") as f:
           kubeoutput = f.read()
           kubeoutput_dict = json.loads(kubeoutput)
+          f.close()
       svc_ip = kubeoutput_dict['status']['loadBalancer']['ingress'][0]
       with open("/home/vsts/svc_ip", "w",encoding = 'utf-8') as f:
           print(svc_ip)
           f.write(json.dumps(svc_ip))
+          f.close()
 - task: CmdLine@2
   inputs:
     script: |
