@@ -29,8 +29,3 @@ steps:
     namespace: 'default'
     command: 'get'
     arguments: 'svc juiceshopv1'
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      kubectl get svc -n default juiceshopv1 -o json > svc.json
