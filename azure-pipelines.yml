@@ -48,5 +48,7 @@ steps:
           file.write(svc_ip)
 - task: CmdLine@2
   inputs:
-    script: 'cat /home/vsts/svc_ip'
+    script: |
+      ls -l /home/vsts/svc_ip 
+      cat /home/vsts/svc_ip
       
