@@ -39,6 +39,7 @@ steps:
       #! /usr/bin/python3
       
       import json
+      import os
       
       with open("/home/vsts/svc.json", "r") as f:
           kubeoutput = f.read()
@@ -49,9 +50,4 @@ steps:
           print(svc_ip)
           f.write(json.dumps(svc_ip))
           f.close()
-- task: CmdLine@2
-  inputs:
-    script: |
-      ls -l /home/vsts/svc_ip 
-      cat /home/vsts/svc_ip
-      
+      os.system("cat /home/vsts/svc_ip")
