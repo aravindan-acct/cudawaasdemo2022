@@ -42,5 +42,5 @@ steps:
       
       with open("/home/vsts/svc.json", "r") as f:
           kubeoutput = f.read()
-          print(kubeoutput)
+          print(type(kubeoutput))
       
