@@ -16,4 +16,6 @@ steps:
     action: 'deploy'
     kubernetesServiceConnection: 'kubedeploy'
     namespace: 'default'
-    manifests: 'manifests/deployment.yml|manifests/service.yml'
+    manifests: |
+      manifests/deployment.yml
+      manifests/service.yml
