@@ -30,5 +30,5 @@ steps:
   inputs:
     script: |
       mv $(kubeconfig.secureFilePath) .
-      ls
+      ls -a /home/vsts/
       
