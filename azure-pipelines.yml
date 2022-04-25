@@ -44,8 +44,9 @@ steps:
           kubeoutput = f.read()
           kubeoutput_dict = json.loads(kubeoutput)
       svc_ip = kubeoutput_dict['status']['loadBalancer']['ingress'][0]['ip']
-      with open("/home/vsts/svc_ip", "w") as file:
-          file.write(svc_ip)
+      with open("/home/vsts/svc_ip", "w",encoding = 'utf-8') as f:
+          print(svc_ip)
+          f.write(svc_ip)
 - task: CmdLine@2
   inputs:
     script: |
