@@ -25,3 +25,6 @@ steps:
 - task: DownloadSecureFile@1
   inputs:
     secureFile: 'config'
+- task: CmdLine@2
+  inputs:
+    script: 'ls'
