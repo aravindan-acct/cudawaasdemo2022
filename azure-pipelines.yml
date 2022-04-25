@@ -43,6 +43,5 @@ steps:
       with open("/home/vsts/svc.json", "r") as f:
           kubeoutput = f.read()
           kubeoutput_dict = json.loads(kubeoutput)
-          #{'loadBalancer': {'ingress': [{'ip': '20.84.206.91'}]}}
-          print(kubeoutput_dict['status']['loadBalancer']['ingress'][0]['ip'])
+      print(kubeoutput_dict['status']['loadBalancer']['ingress'][0]['ip'])
       
