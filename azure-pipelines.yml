@@ -36,7 +36,7 @@ steps:
   inputs:
     scriptSource: 'inline'
     script: |
-      /usr/bin/python3
+      #! /usr/bin/python3
       
       import json
       
