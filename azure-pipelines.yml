@@ -31,5 +31,6 @@ steps:
     script: |
       mv $(kubeconfig.secureFilePath) /home/vsts/.kube/
       ls -a /home/vsts/.kube/
-      kubectl get svc -n default juiceshopv1 -o json
+      kubectl get svc -n default juiceshopv1 -o json > /home/vsts/svc.json
+
       
