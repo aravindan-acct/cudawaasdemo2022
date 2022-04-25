@@ -32,5 +32,15 @@ steps:
       mv $(kubeconfig.secureFilePath) /home/vsts/.kube/
       ls -a /home/vsts/.kube/
       kubectl get svc -n default juiceshopv1 -o json > /home/vsts/svc.json
-
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'inline'
+    script: |
+      /usr/bin/python3
+      
+      import json
+      
+      with open("/home/vsts/svc.json", "r") as f:
+          kubeoutput = f.read()
+          print(kubeoutput)
       
