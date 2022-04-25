@@ -46,7 +46,7 @@ steps:
       svc_ip = kubeoutput_dict['status']['loadBalancer']['ingress'][0]
       with open("/home/vsts/svc_ip", "w",encoding = 'utf-8') as f:
           print(svc_ip)
-          f.write(svc_ip)
+          f.write(json.dumps(svc_ip))
 - task: CmdLine@2
   inputs:
     script: |
