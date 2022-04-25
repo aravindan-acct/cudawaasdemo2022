@@ -28,4 +28,4 @@ steps:
     kubernetesServiceEndpoint: 'kubedeploy'
     namespace: 'default'
     command: 'get'
-    arguments: 'svc juiceshopv1 > svc.json'
+    arguments: 'svc juiceshopv1'
