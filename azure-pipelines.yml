@@ -23,8 +23,12 @@ steps:
   inputs:
     kubectlVersion: 'latest'
 - task: DownloadSecureFile@1
+  name: kubeconfig
   inputs:
     secureFile: 'config'
 - task: CmdLine@2
   inputs:
-    script: 'ls'
+    script: |
+      mv $(kubeconfig.secureFilePath) .
+      ls
+      
