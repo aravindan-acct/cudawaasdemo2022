@@ -15,4 +15,6 @@ steps:
     action: 'deploy'
     kubernetesServiceConnection: 'kubedeploy'
     namespace: 'default'
-    manifests: 'manifests/graphql_deployment.ymlmanifests/graphql_service.yml'
+    manifests: |
+      manifests/graphql_deployment.yml
+      manifests/graphql_service.yml
