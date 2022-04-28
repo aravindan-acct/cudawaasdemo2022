@@ -17,3 +17,6 @@ spec:
           image: dolevf/dvga
           ports:
           - containerPort: 5013
+          env:
+          - name: WEB_HOST
+            value: 0.0.0.0
