@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: graphqlv1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: graphqlv1
+  template:
+    metadata:
+      labels:
+        app: graphqlv1
+    spec:
+      containers:
+        - name: graphqlnew 
+          image: dolevf/dvga
+          ports:
+          - containerPort: 5013
