@@ -16,5 +16,5 @@ steps:
     kubernetesServiceConnection: 'kubedeploy'
     namespace: 'stagingappv1'
     manifests: |
-      deployment.yml
-      service.yml
+      manifests/deployment.yml
+      manifests/service.yml
