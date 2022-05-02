@@ -36,7 +36,7 @@ def waas_login():
 
 login_info = waas_login()
 
-print(login_info)
+#print(login_info)
 
 environment = ["production","staging"]
 
@@ -47,9 +47,9 @@ create_svc_url = login_info["base_url"]+"applications/"
 with open("/home/vsts/svc_ip","r") as f:
     svr_ip_str = f.read()
     svr_ip = json.loads(svr_ip_str)
-print("Backend server ip: \n")
-print(json.loads(svr_ip_str))
-print(svr_ip["ip"])
+print("Backend server ip: " + {svr_ip["ip"]})
+#print(json.loads(svr_ip_str))
+
 
 existing_svc = []
 check_svc_exists = requests.get(create_svc_url, headers=login_info["headers"])
@@ -57,12 +57,12 @@ svc_data = json.loads(check_svc_exists.text)
 for svc in range(len(svc_data["results"])):
     svc_name = svc_data["results"][svc]["name"]
     existing_svc.append(svc_name)
-print(existing_svc)
+#print(existing_svc)
 
 for env in range(len(environment)):
     app_name = "juiceshopv1-"+environment[env]
     if app_name in existing_svc:
-        print(app_name + " service exists")
+        print(app_name + " service exists, exiting without changes.")
     else:
         payload = {
         "applicationName": app_name,
@@ -86,7 +86,7 @@ for env in range(len(environment)):
         ]
         }
         print("Creating WAAS Configuration for the " + environment[env] + " environment")
-        print(json.dumps(payload))
+        #print(json.dumps(payload))
         create_svc_response = requests.post(create_svc_url, headers=login_info["headers"], data=json.dumps(payload)) 
         print(create_svc_response.text)
 print("For GUI access visit: https://waas.barracudanetworks.com")
