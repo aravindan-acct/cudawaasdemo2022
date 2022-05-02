@@ -45,8 +45,9 @@ environment = ["production","staging"]
 create_svc_url = login_info["base_url"]+"applications/"
 
 with open("/home/vsts/svc_ip","r") as f:
-    svr_ip = f.read().strip()
+    svr_ip = f.read()
 
+print(svr_ip)
 
 for env in range(len(environment)):
     payload = {

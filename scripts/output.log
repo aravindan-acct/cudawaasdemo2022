@@ -10,3 +10,5 @@ DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.waas.barracu
 DEBUG:urllib3.connectionpool:https://api.waas.barracudanetworks.com:443 "POST /v2/waasapi/api_login/ HTTP/1.1" 200 190
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.waas.barracudanetworks.com:443
 DEBUG:urllib3.connectionpool:https://api.waas.barracudanetworks.com:443 "GET /v2/waasapi/applications/ HTTP/1.1" 401 27
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.waas.barracudanetworks.com:443
+DEBUG:urllib3.connectionpool:https://api.waas.barracudanetworks.com:443 "POST /v2/waasapi/api_login/ HTTP/1.1" 200 190
