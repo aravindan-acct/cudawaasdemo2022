@@ -76,6 +76,7 @@ for env in range(len(environment)):
     print("Creating WAAS Configuration for the " + environment[env] + " environment")
     check_svc_exists = requests.get(create_svc_url, headers=login_info["headers"])
     print(check_svc_exists.text)
+    svc_data = json.loads(check_svc_exists.text)
     for svc in range(len(svc_data["results"])):
         print(svc)
     '''
