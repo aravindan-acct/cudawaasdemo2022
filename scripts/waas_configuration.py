@@ -47,6 +47,7 @@ create_svc_url = login_info["base_url"]+"applications/"
 with open("/home/vsts/svc_ip","r") as f:
     svr_ip_str = f.read()
     svr_ip = json.loads(svr_ip_str)
+print(json.loads(svr_ip_str))
 print(svr_ip["ip"])
 
 for env in range(len(environment)):
