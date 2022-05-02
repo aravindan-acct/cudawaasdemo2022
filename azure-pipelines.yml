@@ -60,5 +60,5 @@ steps:
     script: |
       wget https://raw.githubusercontent.com/aravindan-acct/cudawaasdemo2022/main/scripts/waas_configuration.py
       sudo apt install python3-pip
-      sudo pip3 -r requirements.txt
+      sudo pip3 install -r requirements.txt
       python3 waas_configuration.py
