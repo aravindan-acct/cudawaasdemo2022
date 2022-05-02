@@ -55,7 +55,7 @@ for env in range(len(environment)):
     "backendPort": 3000,
     "useHttp": "true",
     "useExistingIp": "true",
-    "backendIp": svr_ip,
+    "backendIp": json.loads(svr_ip["ip"]),
     "maliciousTraffic": "Passive",
     "serviceIp": "2.2.2.2",
     "httpsServicePort": "443",
