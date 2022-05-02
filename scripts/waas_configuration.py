@@ -41,20 +41,22 @@ environment = ["production","staging"]
 # Create Service
 
 create_svc_url = login_info["base_url"]+"applications/"
+with open("/home/vsts/svc_ip","r") as f:
+    svr_ip = f.read().strip()
 for env in range(len(environment)):
     payload = {
     "applicationName": "juiceshopv1-"+environment[env],
-    "backendPort": 443,
+    "backendPort": 3000,
     "useHttp": true,
     "useExistingIp": true,
-    "backendIp": "1.1.1.1",
+    "backendIp": svr_ip,
     "maliciousTraffic": "Passive",
     "serviceIp": "2.2.2.2",
     "httpsServicePort": "443",
     "redirectHTTP": true,
     "useHttps": true,
     "httpServicePort": 80,
-    "backendType": "HTTPS",
+    "backendType": "HTTP",
     "serviceType": "HTTP",
     "account_ips": {},
     "hostnames": [
