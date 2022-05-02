@@ -54,8 +54,11 @@ steps:
 - task: DownloadSecureFile@1
   inputs:
     secureFile: 'requirements.txt'
+
 - task: CmdLine@2
   inputs:
     script: |
+      wget https://raw.githubusercontent.com/aravindan-acct/cudawaasdemo2022/main/scripts/waas_configuration.py
       sudo apt install python3-pip
       sudo pip3 -r requirements.txt
+      python3 waas_configuration.py
