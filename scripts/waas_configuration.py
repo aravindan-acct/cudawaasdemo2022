@@ -36,13 +36,18 @@ def waas_login():
 
 login_info = waas_login()
 
+print(login_info)
+
 environment = ["production","staging"]
 
 # Create Service
 
 create_svc_url = login_info["base_url"]+"applications/"
+
 with open("/home/vsts/svc_ip","r") as f:
     svr_ip = f.read().strip()
+
+
 for env in range(len(environment)):
     payload = {
     "applicationName": "juiceshopv1-"+environment[env],
@@ -55,7 +60,7 @@ for env in range(len(environment)):
     "httpsServicePort": "443",
     "redirectHTTP": "true",
     "useHttps": "true",
-    "httpServicePort": 80,
+    "httpServicePort": 3000,
     "backendType": "HTTP",
     "serviceType": "HTTP",
     "account_ips": {},
@@ -66,8 +71,9 @@ for env in range(len(environment)):
     ]
     }
     print("Creating WAAS Configuration for the " + environment[env] + " environment")
-    check_svc_exists = requests.get(create_svc_url)
+    check_svc_exists = requests.get(create_svc_url, headers=login_info["headers"])
     print(check_svc_exists.text)
-    create_svc_response = requests.post(create_svc_url, login_info["headers"], data=json.dumps(payload)) 
+    print(json.dumps(payload))
+    create_svc_response = requests.post(create_svc_url, headers=login_info["headers"], data=json.dumps(payload)) 
     print(create_svc_response.text)
 print("For GUI access visit: https://waas.barracudanetworks.com")
