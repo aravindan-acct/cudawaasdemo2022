@@ -51,37 +51,43 @@ print("Backend server ip: \n")
 print(json.loads(svr_ip_str))
 print(svr_ip["ip"])
 
+existing_svc = []
+check_svc_exists = requests.get(create_svc_url, headers=login_info["headers"])
+svc_data = json.loads(check_svc_exists.text)
+for svc in range(len(svc_data["results"])):
+    svc_name = svc_data["results"][svc]["name"]
+    existing_svc.append(svc_name)
+print(existing_svc)
+
 for env in range(len(environment)):
-    payload = {
-    "applicationName": "juiceshopv1-"+environment[env],
-    "backendPort": 3000,
-    "useHttp": "true",
-    "useExistingIp": "true",
-    "backendIp": svr_ip["ip"],
-    "maliciousTraffic": "Passive",
-    "serviceIp": "2.2.2.2",
-    "httpsServicePort": "443",
-    "redirectHTTP": "true",
-    "useHttps": "true",
-    "httpServicePort": 3000,
-    "backendType": "HTTP",
-    "serviceType": "HTTP",
-    "account_ips": {},
-    "hostnames": [
-        {
-        "hostname": environment[env]+".juiceshopv1.cudatech.info"
+    app_name = "juiceshopv1-"+environment[env]
+    if app_name in existing_svc:
+        print(app_name + " service exists")
+    else:
+        payload = {
+        "applicationName": app_name,
+        "backendPort": 3000,
+        "useHttp": "true",
+        "useExistingIp": "true",
+        "backendIp": svr_ip["ip"],
+        "maliciousTraffic": "Passive",
+        "serviceIp": "2.2.2.2",
+        "httpsServicePort": "443",
+        "redirectHTTP": "true",
+        "useHttps": "true",
+        "httpServicePort": 3000,
+        "backendType": "HTTP",
+        "serviceType": "HTTP",
+        "account_ips": {},
+        "hostnames": [
+            {
+            "hostname": environment[env]+".juiceshopv1.cudatech.info"
+            }
+        ]
         }
-    ]
-    }
-    print("Creating WAAS Configuration for the " + environment[env] + " environment")
-    check_svc_exists = requests.get(create_svc_url, headers=login_info["headers"])
-    print(check_svc_exists.text)
-    svc_data = json.loads(check_svc_exists.text)
-    for svc in range(len(svc_data["results"])):
-        print(svc)
-    '''
-    print(json.dumps(payload))
-    create_svc_response = requests.post(create_svc_url, headers=login_info["headers"], data=json.dumps(payload)) 
-    print(create_svc_response.text)
-    '''
+        print("Creating WAAS Configuration for the " + environment[env] + " environment")
+        print(json.dumps(payload))
+        create_svc_response = requests.post(create_svc_url, headers=login_info["headers"], data=json.dumps(payload)) 
+        print(create_svc_response.text)
 print("For GUI access visit: https://waas.barracudanetworks.com")
+
