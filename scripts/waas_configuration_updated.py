@@ -62,7 +62,7 @@ for svc in range(len(svc_data["results"])):
 for env in range(len(environment)):
     app_name = "juiceshopv1-"+environment[env]
     if app_name in existing_svc:
-        print(app_name + " service exists, exiting without changes.")
+        print(app_name + " service exists. Leaving unchanged.")
     else:
         payload = {
         "applicationName": app_name,
@@ -85,6 +85,7 @@ for env in range(len(environment)):
             }
         ]
         }
+        print(app_name + "does not exist")
         print("Creating WAAS Configuration for the " + environment[env] + " environment")
         #print(json.dumps(payload))
         create_svc_response = requests.post(create_svc_url, headers=login_info["headers"], data=json.dumps(payload)) 
