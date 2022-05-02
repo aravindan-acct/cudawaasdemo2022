@@ -51,3 +51,11 @@ steps:
           f.write(json.dumps(svc_ip))
           f.close()
       os.system("cat /home/vsts/svc_ip")
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: 'requirements.txt'
+- task: CmdLine@2
+  inputs:
+    script: |
+      sudo apt install python3-pip
+      sudo pip3 -r requirements.txt
