@@ -65,7 +65,7 @@ for env in range(len(environment)):
         }
     ]
     }
-    print("Creating WAAS Configuration for the " + environment["production"] + " environment")
+    print("Creating WAAS Configuration for the " + environment[env] + " environment")
     check_svc_exists = requests.get(create_svc_url)
     print(check_svc_exists.text)
     create_svc_response = requests.post(create_svc_url, login_info["headers"], data=json.dumps(payload)) 
