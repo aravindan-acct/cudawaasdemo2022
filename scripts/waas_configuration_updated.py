@@ -19,8 +19,8 @@ password=getpass.getpass()
 args = parser.parse_args()
 '''
 
-username = "aravindan.acct@gmail.com"
-password = "Gartner_demo123!"
+username = "changeasrequired"
+password = "changeasrequired"
 
 def waas_login():
     base_url = "https://api.waas.barracudanetworks.com/v2/waasapi/"
