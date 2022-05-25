@@ -14,7 +14,7 @@ steps:
   inputs:
     action: 'deploy'
     kubernetesServiceConnection: 'wafPMAKS_cluster'
-    namespace: 'stagingappv1'
+    namespace: 'default'
     manifests: |
       manifests/deployment.yml
       manifests/service.yml
